@@ -3,7 +3,7 @@
 <div>
 
 <div *ngFor="let d of dice">
-  <die [color]=d.color [notifier]="subject"> </die>
+  <die [color]=d.color [notifier]="subject" [max]=d.max> </die>
 </div>
 
 <button (click)="handleClick()" style="clear:left; display:block;">Roll</button>

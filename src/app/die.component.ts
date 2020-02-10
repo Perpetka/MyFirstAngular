@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 export class DieComponent{
   @Input() color : string;
   value = 5;
-  max = 6;
+  @Input() max;
 
   @Input() notifier: Subject<any>;
 

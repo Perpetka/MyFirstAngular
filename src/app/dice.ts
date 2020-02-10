@@ -1,18 +1,18 @@
 export const dice = 
 [
   {
-    color: "red"
+    color: "red", max: 6
   },
     {
-    color: "blue"
+    color: "blue", max: 6
   },  {
-    color: "yellow"
+    color: "yellow", max: 6
   },  {
-    color: "green"
+    color: "green", max: 4
   },  {
-    color: "purple"
+    color: "purple", max: 6
   },  {
-    color: "white"
+    color: "white", max: 6
   },
 
 ];

@@ -1,12 +1,13 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'die',
-  template: `<div color="{{ color }}">{{value}}!</div>`,
-  styles: [`h1 { font-family: Lato; }`]
+  template: `<div class="{{color}}">{{value}}</div>`,
+  styles: [`.red {background-color:#ff0000} .blue {background-color:#0000ff}`]
 })
 
-export class DieComponent  {
-  @Input() color: string;
-  //value = 5;
+
+export class DieComponent{
+  @Input() color : string;
+  value = 5;
 }

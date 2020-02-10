@@ -11,16 +11,23 @@ import { Subject } from 'rxjs';
 export class DieComponent{
   @Input() color : string;
   value = 5;
+  max = 6;
 
   @Input() notifier: Subject<any>;
 
   ngOnInit() {
     if (this.notifier != null) {
       this.notifier.subscribe((event) => {
-        this.value = Math.floor(Math.random() * 6) + 1 ;
+        this.roll() ;
       })
     }
-    this.value = Math.floor(Math.random() * 6) + 1 ;
+     this.roll() ;
+  }
+
+  roll()
+  {
+    this.value = Math.floor(Math.random() * this.max) + 1;
+    //emit event Rerolled();
   }
 
 }

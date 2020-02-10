@@ -16,3 +16,15 @@ export const dice =
   },
 
 ];
+
+export class DieDefinition
+{
+  max : number;
+  color: string;
+
+  constructor( max, color )
+  {
+    this.max = max;
+    this.color = color;
+  }
+}

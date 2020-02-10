@@ -3,8 +3,7 @@ import { Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { DieComponent } from './die.component';
-import { DieModel } from './die-model';
-import {dice} from './dice';
+import {dice, DieDefinition } from './dice';
 
 @Component({
   selector: 'die-collection',
@@ -14,7 +13,7 @@ import {dice} from './dice';
 
 
 export class DieCollectionComponent implements AfterViewInit{  
-  dice = dice.map( d => new DieModel( d.max, d.color ));
+  dice = dice.map( d => new DieDefinition( d.max, d.color ));
 
   rollSum = 0;
 
@@ -37,10 +36,9 @@ export class DieCollectionComponent implements AfterViewInit{
   addDie( max )
   {
     if( max == 6)
-      this.dice.push( new DieModel(6, "aqua") );
+      this.dice.push( new DieDefinition(6, "aqua") );
     else
-      this.dice.push( new DieModel(max, "orange"));
-    //this.calculateSum();
+      this.dice.push( new DieDefinition(max, "orange"));
   }
 
   ngAfterViewInit()

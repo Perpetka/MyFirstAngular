@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import { Subject } from 'rxjs';
 import { Output, EventEmitter } from '@angular/core';
 import {RolledDie} from './dice';
 
@@ -13,18 +12,7 @@ import {RolledDie} from './dice';
 export class DieComponent{
   @Input() die : RolledDie;
 
-  @Input() notifier: Subject<any>;
-
   @Output() ValueChanged = new EventEmitter();
-
-  ngOnInit() {
-    if (this.notifier != null) {
-      this.notifier.subscribe((event) => {
-        this.roll() ;
-      })
-    }
-     this.roll() ;
-  }
 
   roll()
   {

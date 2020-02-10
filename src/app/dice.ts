@@ -28,3 +28,15 @@ export class DieDefinition
     this.color = color;
   }
 }
+
+export class RolledDie extends DieDefinition
+{
+  value : number;
+
+  constructor( max, color) { super(max, color); this.roll(); }
+
+  roll()
+  {
+    this.value = Math.floor(Math.random() * this.max) + 1;
+  }
+}

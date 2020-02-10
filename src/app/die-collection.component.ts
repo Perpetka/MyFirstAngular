@@ -2,7 +2,7 @@ import {Component, Input, QueryList, ViewChildren, AfterViewInit} from '@angular
 import { Subject } from 'rxjs';
 
 import { DieComponent } from './die.component';
-import {initialDice, DieDefinition } from './dice';
+import {initialDice, RolledDie } from './dice';
 
 @Component({
   selector: 'die-collection',
@@ -12,33 +12,34 @@ import {initialDice, DieDefinition } from './dice';
 
 
 export class DieCollectionComponent implements AfterViewInit{  
-  dice = initialDice.map( d => new DieDefinition( d.max, d.color ));
+  rolledDice = initialDice.map( d => new RolledDie( d.max, d.color ));
 
   rollSum = 0;
 
   subject = new Subject<string>();
 
-   @ViewChildren(DieComponent) dieComponents !: QueryList<DieComponent>;
+   //@ViewChildren(DieComponent) dieComponents !: QueryList<DieComponent>;
 
   handleClick() {
     // This will send a message via the subject
-    this.subject.next("roll, babies");
+    //this.subject.next("roll, babies");
+    this.rolledDice.forEach( d => d.roll());
     this.calculateSum();
   }
 
   calculateSum()
   {
-    if( !this.dieComponents ) return;
+    //if( !this.dieComponents ) return;
     this.rollSum = 0;
-    this.dieComponents.forEach( d =>this.rollSum += d.value);
+    this.rolledDice.forEach( d =>this.rollSum += d.value);
   }
 
   addDie( max )
   {
     if( max == 6)
-      this.dice.push( new DieDefinition(6, "aqua") );
+      this.rolledDice.push( new RolledDie(6, "aqua") );
     else
-      this.dice.push( new DieDefinition(max, "orange"));
+      this.rolledDice.push( new RolledDie(max, "orange"));
   }
 
   ngAfterViewInit()

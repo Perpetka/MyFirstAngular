@@ -1,0 +1,11 @@
+<h1>Dice</h1>
+
+<div>
+
+<div *ngFor="let d of dice">
+  <die [color]=d.color [notifier]="subject"> </die>
+</div>
+
+<button (click)="handleClick()" style="clear:left; display:block;">Roll</button>
+
+</div>

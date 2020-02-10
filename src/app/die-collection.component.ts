@@ -1,9 +1,8 @@
 import {Component, Input, QueryList, ViewChildren, AfterViewInit} from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { DieComponent } from './die.component';
-import {dice, DieDefinition } from './dice';
+import {initialDice, DieDefinition } from './dice';
 
 @Component({
   selector: 'die-collection',
@@ -13,7 +12,7 @@ import {dice, DieDefinition } from './dice';
 
 
 export class DieCollectionComponent implements AfterViewInit{  
-  dice = dice.map( d => new DieDefinition( d.max, d.color ));
+  dice = initialDice.map( d => new DieDefinition( d.max, d.color ));
 
   rollSum = 0;
 
@@ -29,6 +28,7 @@ export class DieCollectionComponent implements AfterViewInit{
 
   calculateSum()
   {
+    if( !this.dieComponents ) return;
     this.rollSum = 0;
     this.dieComponents.forEach( d =>this.rollSum += d.value);
   }
@@ -44,7 +44,7 @@ export class DieCollectionComponent implements AfterViewInit{
   ngAfterViewInit()
   {
     this.calculateSum();
-    this.dieComponents.changes.subscribe((r) => { this.calculateSum(); });
+    //this.dieComponents.changes.subscribe((r) => { this.calculateSum(); });
   }
 
   // Complete the subject when your component is destroyed to avoid memory leaks

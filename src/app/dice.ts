@@ -1,4 +1,4 @@
-export const dice = 
+export const initialDice = 
 [
   {
     color: "red", max: 6

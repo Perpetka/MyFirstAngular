@@ -3,7 +3,7 @@
 <div>
 
 <div *ngFor="let d of dice">
-  <die [color]=d.color [notifier]="subject" [max]=d.max> </die>
+  <die [color]=d.color [notifier]="subject" [max]="d.max" (ValueChanged)="calculateSum()"> </die>
 </div>
 
 <button (click)="handleClick()" style="clear:left; display:block;">Roll</button>
@@ -11,9 +11,7 @@
 <p>Sum: {{rollSum}}</p>
 
 
-<button (click)="addDie(6)" style="clear:left; display:block;">Add K6</button>
-<button (click)="addDie(4)">Add K4</button>
-
-
+<button (click)="addDie(6)" style="display:block; float:left;">Add K6</button>
+<button (click)="addDie(4)" style="display:block; float:left;">Add K4</button>
 
 </div>

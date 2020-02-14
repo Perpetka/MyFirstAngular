@@ -37,5 +37,6 @@ export class DieCollectionComponent {
       this.rolledDice.push( new RolledDie(6, "aqua") );
     else
       this.rolledDice.push( new RolledDie(max, "orange"));
+    this.calculateSum();
   }
 }

@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 @Component({
   selector: "purple-area",
   template: `
-  <h3>purple area - click on first free field to place selected die</h3>
+  <h5>purple area - click on first free field to place selected die</h5>
   <div *ngFor="let f of area.fields; last as isLast">
     <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>
     <div class="between-fields" *ngIf="!isLast">&lt;</div>

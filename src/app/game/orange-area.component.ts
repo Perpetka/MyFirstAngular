@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 @Component({
   selector: "orange-area",
   template: `
-  <h3>orange area - click on first free field to place selected die</h3>
+  <h5>orange area - click on first free field to place selected die</h5>
   <div *ngFor="let f of area.fields">
     <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>
   </div><br/>

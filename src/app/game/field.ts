@@ -57,6 +57,21 @@ constructor( fieldColor: string )  { super(fieldColor); }
   }
 }
 
+export class SubsequentValueField extends ValueField{
+
+  previousField : BaseField;
+
+   canBeChecked(die : RolledGameDie)
+   {
+      if( !super.canBeChecked(die))
+        return false;
+      if( this.previousField )
+        return this.previousField.isChecked();
+      return true;
+   }
+
+}
+
 export class ExactField extends BaseField
 {
   requiredValue : number;

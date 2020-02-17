@@ -8,13 +8,14 @@ export class BaseField
 
   color : string;
 
-  constructor( )
+  constructor( fieldColor: string )
   {
-    
+    this.color = fieldColor;
   }
 
   canBeChecked(die : RolledGameDie) {
-     if( this.isChecked  )
+    console.log("checking " + die.color + this.isChecked() + this.color);
+     if( this.isChecked()  )
       return false;
      if( this.color == die.color || die.isWildcardColor )
       return true;
@@ -40,12 +41,20 @@ export class BaseField
 }
 
 export class ValueField extends BaseField{
+
+constructor( fieldColor: string )  { super(fieldColor); }
+
   value: number;
 
   isChecked() {
     if(this.value)
       return true;
     return false;
+  }
+
+  checkAction(die : RolledGameDie) 
+  {
+    this.value=die.value;
   }
 }
 

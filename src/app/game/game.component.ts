@@ -1,5 +1,5 @@
 import {Component, Input, ViewChildren} from '@angular/core';
-import {OrangeArea} from './area';
+import {OrangeArea, PurpleArea} from './area';
 import {ValueFieldComponent} from './value-field.component'
 import {BaseField} from './field';
 import {RolledGameDie } from './game-dice';
@@ -16,6 +16,8 @@ import { Subject } from 'rxjs';
  <h2>Selected die is: <span *ngIf="activeDie">{{activeDie.color}} {{activeDie.value}}</span></h2>
   
   <orange-area [area]="orangeArea" [dieSelectedNotifier]="subject"></orange-area>
+
+  <purple-area [area]="purpleArea" [dieSelectedNotifier]="subject"></purple-area>
   `
 })
 
@@ -23,6 +25,7 @@ export class GameComponent
 {
   activeDie: RolledGameDie;
   orangeArea: OrangeArea = new OrangeArea();
+  purpleArea: PurpleArea = new PurpleArea();
 
   subject = new Subject<RolledGameDie>();
 

@@ -8,13 +8,14 @@ import { DieComponent } from './die.component';
 import { DieCollectionComponent } from './die-collection.component';
 
 import { OrangeAreaComponent } from './game/orange-area.component';
+import {PurpleAreaComponent} from './game/purple-area.component';
 import { ValueFieldComponent } from './game/value-field.component';
 import { GameComponent } from "./game/game.component";
 import { DieProviderComponent } from "./die-provider.component";
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent, DieComponent, DieCollectionComponent, OrangeAreaComponent, ValueFieldComponent , GameComponent, DieProviderComponent],
+  declarations: [ AppComponent, HelloComponent, DieComponent, DieCollectionComponent, OrangeAreaComponent, PurpleAreaComponent, ValueFieldComponent , GameComponent, DieProviderComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -72,6 +72,21 @@ export class SubsequentValueField extends ValueField{
 
 }
 
+export class SubsequentIncreasingValueField extends SubsequentValueField{
+
+   canBeChecked(die : RolledGameDie)
+   {
+      if( !super.canBeChecked(die))
+        return false;
+      if( this.previousField && (<ValueField>this.previousField).value < 6)
+      {
+        return (<ValueField>this.previousField).value < this.value;
+      }
+      return true;
+   }
+
+}
+
 export class ExactField extends BaseField
 {
   requiredValue : number;

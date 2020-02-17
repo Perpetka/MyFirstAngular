@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {OrangeArea} from './area';
+import {PurpleArea} from './area';
 import {ValueFieldComponent} from './value-field.component'
 import {BaseField} from './field';
 import {RolledGameDie } from './game-dice';
@@ -7,11 +7,11 @@ import { Subject } from 'rxjs';
 
 
 @Component({
-  selector: "orange-area",
+  selector: "purple-area",
   template: `
-  <h3>orange area - click on first free field to place selected die</h3>
+  <h3>purple area - click on first free field to place selected die</h3>
   <div *ngFor="let f of area.fields">
-    <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>
+    <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>&lt;
   </div><br/>
   score: {{area.getScore()}} <br/>
   {{error}}
@@ -19,9 +19,9 @@ import { Subject } from 'rxjs';
   styles: [""]
 })
 
-export class OrangeAreaComponent
+export class PurpleAreaComponent
 {
-  @Input() area: OrangeArea;
+  @Input() area: PurpleArea;
   @Input() dieSelectedNotifier: Subject<RolledGameDie>;
   currentDie: RolledGameDie;
   error: string;

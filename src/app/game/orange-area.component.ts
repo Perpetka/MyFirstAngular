@@ -12,7 +12,8 @@ import { Subject } from 'rxjs';
   <h3>orange area - click on any field to place selected die</h3>
   <div *ngFor="let f of area.fields">
     <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>
-  </div>  
+  </div><br/>
+  score: {{area.getScore()}} <br/>
   {{error}}
   `,
   styles: [""]
@@ -31,7 +32,7 @@ export class OrangeAreaComponent
       this.dieSelectedNotifier.subscribe((die) => {        
         this.currentDie = die;
       })
-      }    
+      }  
   }
 
   processFieldClick( field: BaseField )

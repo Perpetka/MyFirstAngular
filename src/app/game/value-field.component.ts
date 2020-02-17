@@ -4,7 +4,7 @@ import {ValueField} from './field';
 
 @Component({
   selector: "value-field",
-  template: `<div class="field" [style.border.color]="field.color" [style.background.color]="field.color" (click)="onclick()">{{field.value}}</div>`,
+  template: `<div class="field" [style.background-color]="field.color" (click)="onclick()">{{field.value}}</div>`,
   styles: [".field {float: left; height:20px; width: 20px; cursor:pointer; border: solid 1px; padding: 1px; margin: 2px; }"]
 })
 export class ValueFieldComponent

@@ -14,10 +14,9 @@ export class BaseField
   }
 
   canBeChecked(die : RolledGameDie) {
-    console.log("checking " + die.color + this.isChecked() + this.color);
      if( this.isChecked()  )
       return false;
-     if( this.color == die.color || die.isWildcardColor )
+     if( this.color == die.color || die.isWildcardColor() )
       return true;
      return false;
   }

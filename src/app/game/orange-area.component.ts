@@ -28,8 +28,7 @@ export class OrangeAreaComponent
   ngOnInit() 
   {
     if (this.dieSelectedNotifier) {
-      this.dieSelectedNotifier.subscribe((die) => {
-        console.log("subject read");
+      this.dieSelectedNotifier.subscribe((die) => {        
         this.currentDie = die;
       })
       }    

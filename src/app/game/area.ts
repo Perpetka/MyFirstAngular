@@ -11,6 +11,5 @@ export class OrangeArea
     {
       this.fields.push( new ValueField("orange") );
     }
-    console.log("OrangeArea has fields: " + this.fields.length );
   }
 }

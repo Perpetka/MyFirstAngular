@@ -78,9 +78,13 @@ export class SubsequentIncreasingValueField extends SubsequentValueField{
    {
       if( !super.canBeChecked(die))
         return false;
-      if( this.previousField && (<ValueField>this.previousField).value < 6)
+
+      if( this.previousField )
       {
-        return (<ValueField>this.previousField).value < this.value;
+        if ((<ValueField>this.previousField).value < 6)
+        {
+          return (<ValueField>this.previousField).value < die.value;
+        }
       }
       return true;
    }

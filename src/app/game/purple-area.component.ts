@@ -10,13 +10,14 @@ import { Subject } from 'rxjs';
   selector: "purple-area",
   template: `
   <h3>purple area - click on first free field to place selected die</h3>
-  <div *ngFor="let f of area.fields">
-    <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>&lt;
+  <div *ngFor="let f of area.fields; last as isLast">
+    <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>
+    <div class="between-fields" *ngIf="!isLast">&lt;</div>
   </div><br/>
   score: {{area.getScore()}} <br/>
   {{error}}
   `,
-  styles: [""]
+  styles: [".between-fields {float: left;}"]
 })
 
 export class PurpleAreaComponent

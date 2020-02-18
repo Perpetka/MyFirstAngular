@@ -13,9 +13,11 @@ import { ValueFieldComponent } from './game/value-field.component';
 import { GameComponent } from "./game/game.component";
 import { DieProviderComponent } from "./die-provider.component";
 
+import {BonusComponent} from './game/bonus.component';
+
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent, DieComponent, DieCollectionComponent, OrangeAreaComponent, PurpleAreaComponent, ValueFieldComponent , GameComponent, DieProviderComponent],
+  declarations: [ AppComponent, HelloComponent, DieComponent, DieCollectionComponent, OrangeAreaComponent, PurpleAreaComponent, ValueFieldComponent , GameComponent, DieProviderComponent, BonusComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

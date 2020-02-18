@@ -1,4 +1,5 @@
 import {SubsequentValueField, SubsequentIncreasingValueField} from './field';
+import {Action, ExtraDie} from './bonus';
 
 export class OrangeArea
 {
@@ -12,6 +13,11 @@ export class OrangeArea
       this.fields.push( new SubsequentValueField("orange") );
       if( i>0 )
         this.fields[i].previousField = this.fields[i-1];
+      if( i> 5)
+      {
+        this.fields[i].bonus = new Action();
+        this.fields[i].bonus.name = i;
+      }
     }
   }
 

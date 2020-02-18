@@ -1,10 +1,11 @@
 import {RolledGameDie } from './game-dice';
+import {Bonus} from './bonus';
 
 export class BaseField
 {
   private checked : boolean;
 
-  private bonuses : Reward[];
+  private bonus : Bonus;
 
   color : string;
 
@@ -103,18 +104,5 @@ export class ExactField extends BaseField
   }
 }
 
-export class Reward
-{
- name: string;
-}
 
-export class BonusDie extends Reward
-{
-  
-}
-
-export class Action extends Reward
-{
-  
-}
 

@@ -5,14 +5,14 @@ export class Bonus
  name: string;
 }
 
-export class ExtraDie extends Bonus
+export class ExtraDieBonus extends Bonus
 {
   die: RolledGameDie;
   
-  constructor( bonusDie: RolledGameDie)
+  constructor( color: string, value: number)
   {
     super();
-    this.die = bonusDie;
+    this.die = new RolledGameDie(color, value, value == undefined);
   }
 }
 
@@ -24,10 +24,10 @@ export class ReRollAction extends Action
 {  
 }
 
-export class PlayOneMoreDie extends Action
+export class PlayOneMoreDieAction extends Action
 {  
 }
 
-export class RetrieveDie extends Action
+export class RetrieveDieAction extends Action
 {  
 }

@@ -23,10 +23,13 @@ export class AreaComponentBase
 
   processFieldClick( field: BaseField )
   {
+    if( this.currentDie == undefined )
+      return;
     if( field.canBeChecked(this.currentDie))
     {
       var bonus = field.check(this.currentDie);
       this.error = "";
+      this.currentDie = undefined;
       this.moveCompleted.emit( [bonus]);
     }
     else

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Bonus, Action, ExtraDieBonus, PlayOneMoreDieAction, ReRollAction} from './bonus';
+import {Bonus, Action, ExtraDieBonus, PlayOneMoreDieAction, ReRollAction, FoxBonus} from './bonus';
 
 @Component({
   selector: "bonus",
@@ -27,6 +27,8 @@ export class BonusComponent
   {
     if( this.isExtraDie() )
       return (<ExtraDieBonus>this.bonus).die.color;
+    if ( this.bonus instanceof FoxBonus )
+      return "red";
     return "black";
   }
   
@@ -41,8 +43,11 @@ export class BonusComponent
     {
       if( this.bonus instanceof PlayOneMoreDieAction )
         return "+1";
-      else
+      else if ( this.bonus instanceof FoxBonus )
+        return "F";
+      else if ( this.bonus instanceof ReRollAction )
         return "O";
+      return "?";
     }
     else
       {

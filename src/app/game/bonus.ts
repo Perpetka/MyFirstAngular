@@ -31,3 +31,7 @@ export class PlayOneMoreDieAction extends Action
 export class RetrieveDieAction extends Action
 {  
 }
+
+export class FoxBonus extends Action
+{  
+}

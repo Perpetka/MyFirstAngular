@@ -1,5 +1,5 @@
 import {SubsequentValueField, SubsequentIncreasingValueField} from './field';
-import {Bonus, RetrieveDieAction, PlayOneMoreDieAction, ReRollAction, ExtraDieBonus} from './bonus';
+import {Bonus, RetrieveDieAction, PlayOneMoreDieAction, ReRollAction, ExtraDieBonus, FoxBonus} from './bonus';
 
 export class OrangeArea
 {
@@ -13,7 +13,7 @@ export class OrangeArea
 undefined,
 new PlayOneMoreDieAction(),
 undefined,
-undefined,
+new FoxBonus(),
 new ExtraDieBonus( "purple", 6 ),
 new ExtraDieBonus("blue", undefined),
 undefined,

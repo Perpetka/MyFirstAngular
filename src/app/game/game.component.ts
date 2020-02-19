@@ -3,7 +3,7 @@ import {OrangeArea, PurpleArea} from './area';
 import {ValueFieldComponent} from './value-field.component'
 import {BaseField} from './field';
 import {RolledGameDie } from './game-dice';
-import {Bonus, ReRollAction, PlayOneMoreDieAction, ExtraDieBonus} from "./bonus";
+import {Bonus, ReRollAction, PlayOneMoreDieAction, ExtraDieBonus, FoxBonus} from "./bonus";
 import {DieProviderComponent} from '../die-provider.component';
 import { Subject } from 'rxjs';
 
@@ -38,7 +38,6 @@ export class GameComponent
 
   handleDieChosen(die : RolledGameDie)
   {
-    console.log( "GameComponent " + die.color + " " + die.value );
     this.activeDie = die;
     this.subject.next(die);
   }
@@ -63,6 +62,8 @@ export class GameComponent
         this.numberOfRerolls++;
       else if (bonus instanceof PlayOneMoreDieAction)
         this.numberOfPlusOnes++;
+      else if (bonus instanceof FoxBonus)
+        this.numberOfFoxes++;
     }
   }
 

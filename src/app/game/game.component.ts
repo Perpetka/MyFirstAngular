@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
   <die-provider (dieChosen)="handleDieChosen($event)"></die-provider>
   <br/>
  <h2>Selected die is: <span *ngIf="activeDie">{{activeDie.color}} {{activeDie.value}}</span></h2>
- <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}</p>
+ <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}; round {{roundCounter}}</p>
  <p>total score: 
  <span style="color: orange">{{orangeArea.getScore()}}</span> + 
  <span style="color: purple">{{purpleArea.getScore()}}</span> + 
@@ -37,6 +37,7 @@ export class GameComponent
   numberOfRerolls: number = 0;
   numberOfPlusOnes: number = 0;
   numberOfFoxes: number = 0;
+  roundCounter: number = 1;
 
   subject = new Subject<RolledGameDie>();
 
@@ -70,16 +71,23 @@ export class GameComponent
     }
     if( this.activeBonuses.length>0 )
     {
+      //TODO: there will be issues once multiple bonuses
       var bonus = this.activeBonuses.pop();
       if( bonus instanceof ExtraDieBonus)
+      {
         this.handleDieChosen((<ExtraDieBonus>bonus).die);
-      else if ( bonus instanceof ReRollAction )
+        return;
+      }
+      if ( bonus instanceof ReRollAction )
         this.numberOfRerolls++;
       else if (bonus instanceof PlayOneMoreDieAction)
         this.numberOfPlusOnes++;
       else if (bonus instanceof FoxBonus)
         this.numberOfFoxes++;
     }
+    
+    this.roundCounter++;
+
   }
 
 }

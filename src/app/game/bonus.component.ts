@@ -46,7 +46,7 @@ export class BonusComponent
     }
     else
       {
-        if( (<ExtraDieBonus>this.bonus).die.isWildcardValue( )
+        if( (<ExtraDieBonus>this.bonus).die.isWildcardValue )
           return "X";
         else
           return (<ExtraDieBonus>this.bonus).die.value;

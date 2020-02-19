@@ -36,7 +36,7 @@ export class BaseField
 
     this.checkAction(die);
 
-    return this.bonuses;
+    return this.bonus;
   }
 }
 

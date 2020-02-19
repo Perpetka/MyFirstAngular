@@ -12,8 +12,9 @@ import {Bonus, Action, ExtraDieBonus} from './bonus';
   "
   [style.background-color] = "getColor()"
   >{{getIcon()}}</div>`,
-  styles: [".bonus {position:absolute; font-size: xx-small; bottom: -7px; left: 9px; width: 6px;} ",
-   ".action {color: white;}"]
+  styles: [".bonus { font-size: xx-small; width: 8px; text-align: center;} ",
+   ".action {color: white;}",
+   ".die {font-weight: bold;}"]
 })
 export class BonusComponent
 {

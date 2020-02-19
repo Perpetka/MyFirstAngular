@@ -1,11 +1,7 @@
 import {Component, Input} from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
 import {PurpleArea} from './area';
 import {ValueFieldComponent} from './value-field.component'
-import {BaseField} from './field';
-import {RolledGameDie } from './game-dice';
-import { Subject } from 'rxjs';
-import {Bonus} from './bonus';
+import {AreaComponentBase} from './area-components-base';
 
 
 @Component({
@@ -22,32 +18,8 @@ import {Bonus} from './bonus';
   styles: [".between-fields {float: left;}"]
 })
 
-export class PurpleAreaComponent
+export class PurpleAreaComponent  extends AreaComponentBase
 {
   @Input() area: PurpleArea;
-  @Input() dieSelectedNotifier: Subject<RolledGameDie>;
-  @Output() moveCompleted = new EventEmitter<Bonus[]>();
-  currentDie: RolledGameDie;
-  error: string;
 
-  ngOnInit() 
-  {
-    if (this.dieSelectedNotifier) {
-      this.dieSelectedNotifier.subscribe((die) => {        
-        this.currentDie = die;
-      })
-      }  
-  }
-
-  processFieldClick( field: BaseField )
-  {
-    if( field.canBeChecked(this.currentDie))
-    {
-       var bonus = field.check(this.currentDie);
-      this.error = "";
-      this.moveCompleted.emit( [bonus]);
-    }
-    else
-      this.error = "invalid move";
-  }
 }

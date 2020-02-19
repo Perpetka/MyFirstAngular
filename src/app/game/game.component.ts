@@ -84,10 +84,8 @@ export class GameComponent
         this.numberOfPlusOnes++;
       else if (bonus instanceof FoxBonus)
         this.numberOfFoxes++;
-    }
-    
+    }    
     this.roundCounter++;
-
   }
 
 }

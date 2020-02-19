@@ -100,7 +100,7 @@ export class ExactField extends BaseField
   {
     if( !super.canBeChecked(die))
         return false;
-    return die.value == this.requiredValue;
+    return die.value == this.requiredValue || die.isWildcardValue;
   }
 }
 

@@ -16,7 +16,11 @@ import { Subject } from 'rxjs';
   <br/>
  <h2>Selected die is: <span *ngIf="activeDie">{{activeDie.color}} {{activeDie.value}}</span></h2>
  <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}</p>
- <p>total score: </p>
+ <p>total score: 
+ <span style="color: orange">{{orangeArea.getScore()}}</span> + 
+ <span style="color: purple">{{purpleArea.getScore()}}</span> + 
+ <span style="color: red">{{getFoxesScore()}}</span> =
+  {{getTotalScore()}} </p>
   
   <orange-area [area]="orangeArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></orange-area>
 
@@ -35,6 +39,17 @@ export class GameComponent
   numberOfFoxes: number = 0;
 
   subject = new Subject<RolledGameDie>();
+
+  getFoxesScore()
+  {
+    return this.numberOfFoxes * Math.min( this.orangeArea.getScore(), this.purpleArea.getScore());
+  }
+
+  getTotalScore()
+  {
+    return this.orangeArea.getScore()+ this.purpleArea.getScore()
+    + this.getFoxesScore();
+  }
 
   handleDieChosen(die : RolledGameDie)
   {

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Bonus, Action, ExtraDieBonus} from './bonus';
+import {Bonus, Action, ExtraDieBonus, PlayOneMoreDieAction, ReRollAction} from './bonus';
 
 @Component({
   selector: "bonus",
@@ -12,7 +12,7 @@ import {Bonus, Action, ExtraDieBonus} from './bonus';
   "
   [style.background-color] = "getColor()"
   >{{getIcon()}}</div>`,
-  styles: [".bonus { font-size: xx-small; width: 8px; text-align: center;} ",
+  styles: [".bonus { font-size: xx-small; width: 10px; text-align: center;} ",
    ".action {color: white;}",
    ".die {font-weight: bold;}"]
 })
@@ -38,8 +38,18 @@ export class BonusComponent
   getIcon()
   {
     if( this.isAction() )
-      return "A";
+    {
+      if( this.bonus instanceof PlayOneMoreDieAction )
+        return "+1";
+      else
+        return "O";
+    }
     else
-      return "B";
+      {
+        if( (<ExtraDieBonus>this.bonus).die.isWildcardValue( )
+          return "X";
+        else
+          return (<ExtraDieBonus>this.bonus).die.value;
+      }
   }
 }

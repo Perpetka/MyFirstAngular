@@ -72,7 +72,7 @@ export class GameComponent
     {
       var bonus = this.activeBonuses.pop();
       if( bonus instanceof ExtraDieBonus)
-        this.activeDie = (<ExtraDieBonus>bonus).die;
+        this.handleDieChosen((<ExtraDieBonus>bonus).die);
       else if ( bonus instanceof ReRollAction )
         this.numberOfRerolls++;
       else if (bonus instanceof PlayOneMoreDieAction)

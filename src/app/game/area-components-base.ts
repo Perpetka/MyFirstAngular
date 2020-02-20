@@ -31,7 +31,8 @@ export class AreaComponentBase
       var bonuses = [field.check(this.currentDie)];
       this.error = "";
       this.currentDie = undefined;
-      bonuses.push(area.getAreaBonuses(field));
+      if( area )
+        bonuses = bonuses.concat(area.getAreaBonuses(field));
       this.moveCompleted.emit(bonuses);
     }
     else

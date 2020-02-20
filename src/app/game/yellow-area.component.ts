@@ -15,7 +15,7 @@ import {BonusComponent} from './bonus.component';
   <table>
     <tr *ngFor="let r of range"> 
        <td *ngFor="let c of range"> 
-         <exact-field [field]="getField(r,c)" (FieldClicked)="processFieldClick($event)"></exact-field>
+         <exact-field [field]="getField(r,c)" (FieldClicked)="processFieldClick($event, area)"></exact-field>
        </td>
       <td><bonus [bonus]="area.bonuses[r]"></bonus></td>
     </tr>

@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { DiceSet, DieStatus } from './game-dice';
+import { DiceSet, DieStatus, RolledGameDie } from './game-dice';
 import {DieProviderComponent} from '../die-provider.component';
 import {DieComponent} from '../die.component';
 
@@ -16,5 +16,14 @@ export class DiceTrayComponent
 
   constructor() { 
     this.diceSet = new DiceSet();
+  }
+
+  handleDieChosen(die : RolledGameDie)
+  {
+    let myDie = this.diceSet.getDie( die.color );
+    if( myDie.dieStatus == DieStatus.OnTray || myDie.dieStatus == DieStatus.Used)
+      return;
+    myDie.value = die.value;
+    myDie.isWildcardValue = false;
   }
 }

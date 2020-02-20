@@ -1,5 +1,7 @@
 import {RolledDie, initialDice } from '../dice';
 
+export const colors = ["yellow", "blue", "green", "orange", "purple", "white"];
+
 export class RolledGameDie extends RolledDie
 {
   isWildcardValue: boolean;
@@ -34,8 +36,8 @@ export class DiceSet
 
   constructor()
   {
-    this.rolledGameDice = initialDice.map( d =>
-    new RolledGameDie(d.color, 0, true, DieStatus.RolledWillBeRerolled ) );   
+    this.rolledGameDice = colors.map( d =>
+    new RolledGameDie(d, 0, true, DieStatus.RolledWillBeRerolled ) );   
   }
 
   getDie( color: string  ):RolledGameDie{

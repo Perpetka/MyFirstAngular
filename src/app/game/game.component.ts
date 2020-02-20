@@ -10,28 +10,8 @@ import { Subject } from 'rxjs';
 
 @Component({
   selector: "game",
-  template: `
+  templateUrl: "./game.component.html",
   
-  <dice-tray (dieChosen)="handleDieChosen($event)" [roundEndNotifier]="roundEndSubject"></dice-tray>
-  <br/>
- <h2>Selected die is: <span *ngIf="activeDie">{{activeDie.color}} {{activeDie.value}}</span></h2>
- <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}; round {{roundCounter}}</p>
- <p>total score: 
- <span style="color: yellow">{{yellowArea.getScore()}}</span> + 
- <span style="color: green">{{greenArea.getScore()}}</span> + 
- <span style="color: orange">{{orangeArea.getScore()}}</span> + 
- <span style="color: purple">{{purpleArea.getScore()}}</span> + 
- <span style="color: red">{{getFoxesScore()}}</span> =
-  {{getTotalScore()}} </p>
-  
-   <yellow-area [area]="yellowArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></yellow-area>
-
-    <green-area [area]="greenArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></green-area>
-
-  <orange-area [area]="orangeArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></orange-area>
-
-  <purple-area [area]="purpleArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></purple-area>
-  `,
 styles: [".block {clear:left;}"]
 })
 

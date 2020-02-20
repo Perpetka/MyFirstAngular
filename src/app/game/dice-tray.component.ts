@@ -13,6 +13,7 @@ import {DieComponent} from '../die.component';
 export class DiceTrayComponent
 {
   diceSet: DiceSet;
+  @Output() dieChosen = new EventEmitter<DiceSet>();
 
   constructor() { 
     this.diceSet = new DiceSet();
@@ -25,5 +26,17 @@ export class DiceTrayComponent
       return;
     myDie.value = die.value;
     myDie.isWildcardValue = false;
+  }
+
+  activate( die: RolledGameDie )
+  {
+    this.diceSet.getActiveDice().forEach( d => {
+      if( !d.isWildcardValue && !die.isWildcardValue && d.value < die.value )
+        d.dieStatus = DieStatus.RolledWillGoToTray;
+      else
+        d.dieStatus = DieStatus.RolledWillBeRerolled;
+    });
+    die.dieStatus = DieStatus.RolledActive;
+    this.dieChosen.emit(this.diceSet);
   }
 }

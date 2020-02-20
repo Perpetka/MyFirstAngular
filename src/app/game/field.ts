@@ -62,7 +62,7 @@ constructor( fieldColor: string )  { super(fieldColor); }
   }
 }
 
-export class SubsequentIncreasingValueField extends ValueField{
+export class IncreasingValueField extends ValueField{
 
    canBeChecked(die : RolledGameDie)
    {
@@ -105,7 +105,7 @@ export class ExactField extends RestrictedField
   
 }
 
-export class SubsequentMinValueField extends RestrictedField
+export class MinValueField extends RestrictedField
 {
   minValue : number;
   previousField : BaseField;
@@ -113,8 +113,6 @@ export class SubsequentMinValueField extends RestrictedField
   canBeChecked(die : RolledGameDie)
   {
     if( !super.canBeChecked(die))
-        return false;
-    if( this.previousField && !this.previousField.isChecked() )
         return false;
       
     return die.value >= this.minValue || die.isWildcardValue;

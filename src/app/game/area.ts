@@ -112,9 +112,21 @@ export class YellowArea extends BaseArea
 
     getScore() : number
     {
+      let scores = [
+        [[0,3,6], 10],
+        [[1,4,9], 14],
+        [[2,7,10], 16],
+        [[5,8,11], 20],
+      ];
+
       var sum = 0;
-      this.fields.forEach( f => {if( f.isChecked()) sum++;} );
-      return sum; 
+      scores.forEach( 
+        s => 
+        {
+          if( (<Array<number>s[0]).every( i => this.fields[i].isChecked())) 
+            sum+=<number>s[1];
+        } );
+      return sum;       
     }  
 
     getAreaBonuses( field: BaseField )

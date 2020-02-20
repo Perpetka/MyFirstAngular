@@ -75,10 +75,14 @@ export class YellowArea
     constructor()
     {
       this.fields = [];
-      for( let i= 0; i<12; i++ )
+
+      let values = [3,6, 5,2,1,5,1,2,4,3,4,6];
+
+
+      for( let i= 0; i<values.length; i++ )
       {
         this.fields.push( new ExactField("yellow") );
-        this.fields[i].requiredValue = 1 + (i>5 ? i-6 : i);
+        this.fields[i].requiredValue = values[i];
       }
     }
 

@@ -4,6 +4,7 @@ import {RolledGameDie } from './game-dice';
 import {Bonus} from './bonus';
 import {BaseField} from './field';
 import { Subject } from 'rxjs';
+import {BaseArea} from './area';
 
 export class AreaComponentBase
 {
@@ -17,20 +18,21 @@ export class AreaComponentBase
     if (this.dieSelectedNotifier) {
       this.dieSelectedNotifier.subscribe((die) => {        
         this.currentDie = die;
-      })
+      });
       }  
   }
 
-  processFieldClick( field: BaseField )
+  processFieldClick( field: BaseField, area: BaseArea )
   {
     if( this.currentDie == undefined )
       return;
     if( field.canBeChecked(this.currentDie))
     {
-      var bonus = field.check(this.currentDie);
+      var bonuses = [field.check(this.currentDie)];
       this.error = "";
       this.currentDie = undefined;
-      this.moveCompleted.emit( [bonus]);
+      bonuses.push(area.getAreaBonuses(field));
+      this.moveCompleted.emit(bonuses);
     }
     else
       this.error = "invalid move";

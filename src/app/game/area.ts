@@ -1,12 +1,21 @@
-import {SubsequentValueField, SubsequentIncreasingValueField, ExactField, SubsequentMinValueField} from './field';
+import {SubsequentValueField, SubsequentIncreasingValueField, ExactField, SubsequentMinValueField, BaseField} from './field';
 import {Bonus, RetrieveDieAction, PlayOneMoreDieAction, ReRollAction, ExtraDieBonus, FoxBonus} from './bonus';
 
-export class OrangeArea
+export class BaseArea
+{
+  getAreaBonuses( field: BaseField ) : Bonus[]
+  {
+    return [];
+  }
+}
+
+export class OrangeArea extends BaseArea
 {
   fields : SubsequentValueField[];
 
   constructor()
   {
+    super();
     this.fields = [];
 
     let bonuses: Bonus[] = [
@@ -42,12 +51,13 @@ new ReRollAction()
   }
 }
 
-export class PurpleArea
+export class PurpleArea extends BaseArea
 {
   fields : SubsequentIncreasingValueField[];
 
     constructor()
   {
+    super();
     this.fields = [];
     for( let i= 0; i<10; i++ )
     {
@@ -68,7 +78,7 @@ export class PurpleArea
   }  
 }
 
-export class YellowArea
+export class YellowArea extends BaseArea
   {
     fields: ExactField[];
 
@@ -76,6 +86,8 @@ export class YellowArea
 
     constructor()
     {
+      super();
+
       this.fields = [];
 
       let values = [
@@ -104,14 +116,51 @@ export class YellowArea
       this.fields.forEach( f => {if( f.isChecked()) sum++;} );
       return sum; 
     }  
+
+    getAreaBonuses( field: BaseField )
+    {
+      let ret = [];
+      let diagonal = [0,4,7,11];
+      let index = this.fields.indexOf( field );
+      if( index == -1)
+        return ret;
+      let row = Math.floor( index / 3 );
+      let allChecked : boolean = true;
+      for( let i=0; i<3; i++)
+      {
+        if( !this.fields[row*3+i].isChecked() )
+        {
+          allChecked = false;
+          break;
+        }
+      }
+      if( allChecked )
+        ret.push( this.bonuses[row]);
+
+      if( diagonal.indexOf(index) < 0 )
+        return ret;
+
+      allChecked = true;
+      diagonal.forEach( d => {
+      if( !this.fields[d].isChecked() )
+      
+          allChecked = false;}) ;
+      
+      if( allChecked )
+        ret.push( this.bonuses[4]);
+
+      return ret;
+
+    }
   }
 
-  export class GreenArea
+  export class GreenArea extends BaseArea
   {
     fields: SubsequentMinValueField[];
 
     constructor()
     {
+      super();
       this.fields = [];
 
     let bonuses: Bonus[] = [

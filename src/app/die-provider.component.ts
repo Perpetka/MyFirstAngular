@@ -12,7 +12,7 @@ import { Output, EventEmitter } from '@angular/core';
     </div>
   </div>  
   `,
-  styles: [".die {float:left; border: solid 1px; width: 20px; height: 20px; text-align:center; margin: 2px; clear: none } .row {clear: left}"]
+  styles: [".die {float:left; border: solid 1px; width: 20px; height: 20px; text-align:center; margin: 2px; clear: none; cursor: pointer; } .row {clear: left}"]
 })
 
 export class DieProviderComponent

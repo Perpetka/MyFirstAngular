@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { DiceSet } from './game-dice';
+import { DiceSet, DieStatus } from './game-dice';
 import {DieProviderComponent} from '../die-provider.component';
 import {DieComponent} from '../die.component';
 
@@ -8,7 +8,7 @@ import {DieComponent} from '../die.component';
 @Component({
   selector: "dice-tray",
   templateUrl: `./dice-tray.component.html`,
-  styles: ["`.die {height:20px; width:20px; text-align:center; float:left; margin: 2px; border: 1px solid black; cursor: pointer;`"]
+  styles: [".die {float:left; border: solid 1px; width: 20px; height: 20px; text-align:center; margin: 2px; clear: none; cursor: pointer;"]
   })
 export class DiceTrayComponent
 {

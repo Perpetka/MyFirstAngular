@@ -3,7 +3,10 @@ import {Bonus, RetrieveDieAction, PlayOneMoreDieAction, ReRollAction, ExtraDieBo
 
 export class BaseArea
 {
-  
+  fields: BaseField[];
+
+  constructor() {this.fields = []; }
+
   getAreaBonuses( field: BaseField ) : Bonus[]
   {
     return [];
@@ -12,12 +15,10 @@ export class BaseArea
 
 export class OrangeArea extends BaseArea
 {
-  fields : SubsequentValueField[];
-
+  
   constructor()
   {
     super();
-    this.fields = [];
 
     let bonuses: Bonus[] = [
 undefined,
@@ -54,12 +55,10 @@ new ReRollAction()
 
 export class PurpleArea extends BaseArea
 {
-  fields : SubsequentIncreasingValueField[];
 
     constructor()
   {
     super();
-    this.fields = [];
     for( let i= 0; i<10; i++ )
     {
       this.fields.push( new SubsequentIncreasingValueField("purple") );
@@ -81,15 +80,11 @@ export class PurpleArea extends BaseArea
 
 export class YellowArea extends BaseArea
   {
-    fields: ExactField[];
-
     bonuses : Bonus[];
 
     constructor()
     {
       super();
-
-      this.fields = [];
 
       let values = [
       3,6,5,
@@ -169,12 +164,9 @@ export class YellowArea extends BaseArea
 
   export class GreenArea extends BaseArea
   {
-    fields: SubsequentMinValueField[];
-
     constructor()
     {
       super();
-      this.fields = [];
 
     let bonuses: Bonus[] = [
 undefined,
@@ -215,8 +207,6 @@ undefined
 
   export class BlueArea extends BaseArea
   {
-    fields: ExactField[];
-
     constructor()
     {
       super();

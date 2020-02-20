@@ -12,7 +12,7 @@ import { Subject } from 'rxjs';
   selector: "game",
   template: `
   
-  <die-provider (dieChosen)="handleDieChosen($event)"></die-provider>
+  <dice-tray></dice-tray>
   <br/>
  <h2>Selected die is: <span *ngIf="activeDie">{{activeDie.color}} {{activeDie.value}}</span></h2>
  <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}; round {{roundCounter}}</p>

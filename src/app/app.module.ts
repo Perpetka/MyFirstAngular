@@ -15,6 +15,7 @@ import { ValueFieldComponent } from './game/value-field.component';
 import { ExactFieldComponent } from './game/exact-field.component';
 import { GameComponent } from "./game/game.component";
 import { DieProviderComponent } from "./die-provider.component";
+import { DiceTrayComponent } from "./game/dice-tray.component";
 
 import {BonusComponent} from './game/bonus.component';
 
@@ -22,7 +23,7 @@ import {BonusComponent} from './game/bonus.component';
   imports:      [ BrowserModule, FormsModule ],
   declarations: [ AppComponent, HelloComponent, DieComponent, DieCollectionComponent, OrangeAreaComponent, PurpleAreaComponent, 
   YellowAreaComponent, GreenAreaComponent,
-  ExactFieldComponent, ValueFieldComponent , GameComponent, DieProviderComponent, BonusComponent],
+  ExactFieldComponent, ValueFieldComponent , GameComponent, DieProviderComponent, BonusComponent, DiceTrayComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

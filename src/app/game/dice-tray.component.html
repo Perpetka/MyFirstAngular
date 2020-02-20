@@ -1,0 +1,14 @@
+<die-provider (dieChosen)="handleDieChosen($event)"></die-provider>
+
+<div>available dice: 
+  <div class="die" *ngFor="let d of diceSet.getActiveDice()" [style.background]="d.color" (click)="activate()">{{d.value}}</div>
+ 
+</div>
+<div>tray:
+  <div class="die" *ngFor="let d of diceSet.getDice(DieStatus.OnTray)" [style.background]="d.color" (click)="activate()">{{d.value}}</div>
+  
+</div>
+<div>already used dice:
+  <div class="die" *ngFor="let d of diceSet.getDice(DieStatus.Used)" [style.background]="d.color" (click)="activate()">{{d.value}}</div>
+  
+</div>

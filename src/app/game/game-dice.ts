@@ -1,4 +1,4 @@
-import {RolledDie } from '../dice';
+import {RolledDie, initialDice } from '../dice';
 
 export class RolledGameDie extends RolledDie
 {
@@ -31,4 +31,27 @@ export enum DieStatus
 export class DiceSet
 {
   rolledGameDice : RolledGameDie[]
+
+  constructor()
+  {
+    this.rolledGameDice = initialDice.map( d =>
+    new RolledGameDie(d.color, 0, true, DieStatus.RolledWillBeRerolled ) );   
+  }
+
+  getDie( color: string  ):RolledGameDie{
+    return this.rolledGameDice.find( d => d.color == color);
+  }
+
+  getDice( status: DieStatus  ):RolledGameDie[]{
+    return this.rolledGameDice.filter( d => d.dieStatus == status);
+  }
+
+  getActiveDice( ):RolledGameDie[]{
+    let activeStatuses =[
+      DieStatus.RolledActive,
+      DieStatus.RolledWillGoToTray,
+      DieStatus.RolledWillBeRerolled
+    ];
+    return this.rolledGameDice.filter( d => activeStatuses.includes(d.dieStatus));
+  }
 }

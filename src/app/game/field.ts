@@ -107,6 +107,13 @@ export class ExactField extends RestrictedField
         return false;
     return die.value == this.requiredValue || die.isWildcardValue;
   }
+
+  forceCheck()
+  {
+    let die = new RolledGameDie("white", 1, true);
+    this.check(die);
+  }
+  
 }
 
 export class SubsequentMinValueField extends RestrictedField

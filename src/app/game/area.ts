@@ -1,4 +1,4 @@
-import {SubsequentValueField, SubsequentIncreasingValueField, ExactField, SubsequentMinValueField, BaseField} from './field';
+import {SubsequentIncreasingValueField, ExactField, SubsequentMinValueField, BaseField} from './field';
 import {Bonus, RetrieveDieAction, PlayOneMoreDieAction, ReRollAction, ExtraDieBonus, FoxBonus} from './bonus';
 
 export class BaseArea
@@ -35,7 +35,7 @@ new ReRollAction()
 
     for( let i= 0; i<bonuses.length; i++ )
     {
-      this.fields.push( new SubsequentValueField("orange") );
+      this.fields.push( new ValueField("orange") );
       this.fields[i].bonus = bonuses[i];
       if( i>0 )
         this.fields[i].previousField = this.fields[i-1];      

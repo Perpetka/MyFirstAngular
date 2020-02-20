@@ -9,6 +9,8 @@ export class BaseField
 
   color : string;
 
+  previousField : BaseField;
+
   constructor( fieldColor: string )
   {
     this.color = fieldColor;
@@ -16,6 +18,8 @@ export class BaseField
 
   canBeChecked(die : RolledGameDie) {
      if( this.isChecked()  )
+      return false;
+     if( this.previousField && !this.previousField.isChecked())
       return false;
      if( this.color == die.color || die.isWildcardColor() )
       return true;
@@ -58,22 +62,7 @@ constructor( fieldColor: string )  { super(fieldColor); }
   }
 }
 
-export class SubsequentValueField extends ValueField{
-
-  previousField : BaseField;
-
-   canBeChecked(die : RolledGameDie)
-   {
-      if( !super.canBeChecked(die))
-        return false;
-      if( this.previousField )
-        return this.previousField.isChecked();
-      return true;
-   }
-
-}
-
-export class SubsequentIncreasingValueField extends SubsequentValueField{
+export class SubsequentIncreasingValueField extends ValueField{
 
    canBeChecked(die : RolledGameDie)
    {

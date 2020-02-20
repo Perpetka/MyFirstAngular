@@ -14,7 +14,7 @@ import {AreaComponentBase} from './area-components-base';
   </div></div>
   `,
   styles: [".green-field {float:left;} .green-score {color: white; background-color: green; text-align: center; font-size: x-small; border-radius: 3px; width: 12px; margin: auto; }",
-  ".block {clear:left; margin-bottom: 20px;}"]
+  ".block {clear:left; border: green 1px solid}"]
 })
 
 export class GreenAreaComponent extends AreaComponentBase

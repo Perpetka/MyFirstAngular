@@ -14,7 +14,7 @@ import {AreaComponentBase} from './area-components-base';
   </div></div>
   `,
   styles: [".between-fields {float: left;}",
-  ".block {clear:left; margin-top:20px;}"]
+  ".block {clear:left; margin-top:20px; border: purple 1px solid; font-size: xx-small;}}"]
 })
 
 export class PurpleAreaComponent  extends AreaComponentBase

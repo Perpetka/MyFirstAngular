@@ -10,8 +10,7 @@ import {BonusComponent} from './bonus.component';
 @Component({
   selector: "yellow-area",
   template: `
-  <h5>yellow area - click on any matching field to cross it out</h5>
-
+ 
   <table>
     <tr *ngFor="let r of range"> 
        <td *ngFor="let c of range"> 

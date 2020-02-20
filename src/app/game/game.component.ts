@@ -1,5 +1,5 @@
 import {Component, Input, ViewChildren} from '@angular/core';
-import {OrangeArea, PurpleArea, YellowArea, Green} from './area';
+import {OrangeArea, PurpleArea, YellowArea, GreenArea} from './area';
 import {ValueFieldComponent} from './value-field.component'
 import {BaseField} from './field';
 import {RolledGameDie } from './game-dice';
@@ -18,6 +18,7 @@ import { Subject } from 'rxjs';
  <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}; round {{roundCounter}}</p>
  <p>total score: 
  <span style="color: yellow">{{yellowArea.getScore()}}</span> + 
+ <span style="color: green">{{greenArea.getScore()}}</span> + 
  <span style="color: orange">{{orangeArea.getScore()}}</span> + 
  <span style="color: purple">{{purpleArea.getScore()}}</span> + 
  <span style="color: red">{{getFoxesScore()}}</span> =
@@ -51,7 +52,8 @@ export class GameComponent
   getFoxesScore()
   {
     return this.numberOfFoxes * Math.min( this.orangeArea.getScore(), this.purpleArea.getScore(),
-    this.yellowArea.getScore());
+    this.yellowArea.getScore(),
+    this.greenArea.getScore());
   }
 
   getTotalScore()
@@ -59,6 +61,7 @@ export class GameComponent
     return this.orangeArea.getScore()
     + this.purpleArea.getScore()
     + this.yellowArea.getScore()
+    + this.greenArea.getScore()
     + this.getFoxesScore();
   }
 

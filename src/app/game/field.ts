@@ -113,8 +113,7 @@ export class MinValueField extends RestrictedField
   canBeChecked(die : RolledGameDie)
   {
     if( !super.canBeChecked(die))
-        return false;
-      
+        return false;      
     return die.value >= this.minValue || die.isWildcardValue;
   }
 }

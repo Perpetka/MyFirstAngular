@@ -9,7 +9,7 @@ import {ExactField} from './field';
     'checked': field.isChecked(),
     'unchecked' : !field.isChecked()
   }">{{getText()}}</div>`,
-  styles: [".field {float: left; height:20px; width: 20px; cursor:pointer; border: solid 1px; padding: 1px; margin: 2px; position:relative; }",
+  styles: [".field {float: left; height:20px; width: 20px; cursor:pointer; border: solid 1px; padding: 1px; margin: 2px; position:relative;  text-align: center;}",
   ".checked {font-weight:bold;} .unchecked {color:grey;}"]
 })
 export class ExactFieldComponent

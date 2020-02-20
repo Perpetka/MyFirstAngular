@@ -5,12 +5,12 @@ import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: "die-provider",
-  template: `<h4>Select a die to "roll"</h4>
+  template: `<div><h4>Select a die to "roll"</h4>
   <div *ngFor="let color of dieColors; even as isEven" [className]="isEven ? 'row' : ''">
     <div  *ngFor="let value of values" >
        <div class="die" [style.background]="color" (click)="selected(color, value)">{{value}}</div>
     </div>
-  </div>  
+  </div> </div> 
   `,
   styles: [".die {float:left; border: solid 1px; width: 20px; height: 20px; text-align:center; margin: 2px; clear: none; cursor: pointer; } .row {clear: left}"]
 })

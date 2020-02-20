@@ -7,15 +7,14 @@ import {AreaComponentBase} from './area-components-base';
 @Component({
   selector: "green-area",
   template: `
-  <h5>green area - click on the first free field to cross it out</h5>
+  <div class="block">
   <div *ngFor="let f of area.fields; let i = index;" class="green-field">
   <div class="green-score">{{area.getScoreValue(i+1)}}</div>
     <exact-field [field]="f" (FieldClicked)="processFieldClick($event)"></exact-field>
-  </div><br/>
-  score: {{area.getScore()}} <br/>
-  {{error}}
+  </div></div>
   `,
-  styles: [".green-field {float:left;} .green-score {color: white; background-color: green; text-align: center; font-size: x-small; border-radius: 3px; width: 12px; margin: auto; }"]
+  styles: [".green-field {float:left;} .green-score {color: white; background-color: green; text-align: center; font-size: x-small; border-radius: 3px; width: 12px; margin: auto; }",
+  ".block {clear:left; margin-bottom: 20px;}"]
 })
 
 export class GreenAreaComponent extends AreaComponentBase

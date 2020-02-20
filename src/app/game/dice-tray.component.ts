@@ -9,7 +9,8 @@ import { Subject } from 'rxjs';
 @Component({
   selector: "dice-tray",
   templateUrl: `./dice-tray.component.html`,
-  styles: [".die {float:left; border: solid 1px; width: 20px; height: 20px; text-align:center; margin: 2px; clear: none; cursor: pointer;"]
+  styles: [".die {float:left; border: solid 1px; width: 20px; height: 20px; text-align:center; margin: 2px; clear: none; cursor: pointer;",
+  ".block {clear:left;}"]
   })
 export class DiceTrayComponent
 {

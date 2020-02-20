@@ -31,7 +31,8 @@ import { Subject } from 'rxjs';
   <orange-area [area]="orangeArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></orange-area>
 
   <purple-area [area]="purpleArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></purple-area>
-  `
+  `,
+styles: [".block {clear:left;}"]
 })
 
 export class GameComponent

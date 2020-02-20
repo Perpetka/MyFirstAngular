@@ -26,9 +26,6 @@ import {BonusComponent} from './bonus.component';
      <td><bonus [bonus]="area.bonuses[4]"></bonus></td>
     </tr>
   </table>
-
-  score: {{area.getScore()}} <br/>
-  {{error}}
   `,
   styles: [".yellow-score {color: black; background-color: yellow; text-align: center; font-size: x-small; border-radius: 3px; width: 12px; margin: auto; }"]
 })

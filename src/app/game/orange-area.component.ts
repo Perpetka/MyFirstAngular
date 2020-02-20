@@ -6,15 +6,13 @@ import {AreaComponentBase} from './area-components-base';
 
 @Component({
   selector: "orange-area",
-  template: `
-  <h5>orange area - click on first free field to place selected die</h5>
+  template: `<div class="block">
   <div *ngFor="let f of area.fields">
     <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>
-  </div><br/>
-  score: {{area.getScore()}} <br/>
-  {{error}}
+  </div>
+  </div>
   `,
-  styles: [""]
+  styles: [".block {clear:left; margin-top:8px; margin-bottom: 8px;}"]
 })
 
 export class OrangeAreaComponent extends AreaComponentBase

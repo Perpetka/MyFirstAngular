@@ -7,15 +7,14 @@ import {AreaComponentBase} from './area-components-base';
 @Component({
   selector: "purple-area",
   template: `
-  <h5>purple area - click on first free field to place selected die</h5>
+  <div class="block">
   <div *ngFor="let f of area.fields; last as isLast">
     <value-field [field]="f" (FieldClicked)="processFieldClick($event)"></value-field>
     <div class="between-fields" *ngIf="!isLast">&lt;</div>
-  </div><br/>
-  score: {{area.getScore()}} <br/>
-  {{error}}
+  </div></div>
   `,
-  styles: [".between-fields {float: left;}"]
+  styles: [".between-fields {float: left;}",
+  ".block {clear:left; margin-top:20px;}"]
 })
 
 export class PurpleAreaComponent  extends AreaComponentBase

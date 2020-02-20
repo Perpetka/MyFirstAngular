@@ -2,7 +2,7 @@ import {Component, Input, ViewChildren} from '@angular/core';
 import {OrangeArea, PurpleArea, YellowArea, GreenArea} from './area';
 import {ValueFieldComponent} from './value-field.component'
 import {BaseField} from './field';
-import {RolledGameDie } from './game-dice';
+import {RolledGameDie, DiceSet } from './game-dice';
 import {Bonus, ReRollAction, PlayOneMoreDieAction, ExtraDieBonus, FoxBonus} from "./bonus";
 import {DieProviderComponent} from '../die-provider.component';
 import { Subject } from 'rxjs';
@@ -12,7 +12,7 @@ import { Subject } from 'rxjs';
   selector: "game",
   template: `
   
-  <dice-tray></dice-tray>
+  <dice-tray (dieChosen)="handleDieChosen($event)"></dice-tray>
   <br/>
  <h2>Selected die is: <span *ngIf="activeDie">{{activeDie.color}} {{activeDie.value}}</span></h2>
  <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}; round {{roundCounter}}</p>
@@ -36,6 +36,7 @@ import { Subject } from 'rxjs';
 
 export class GameComponent
 {
+  diceSet: DiceSet;
   activeDie: RolledGameDie;
   orangeArea: OrangeArea = new OrangeArea();
   purpleArea: PurpleArea = new PurpleArea();
@@ -47,7 +48,7 @@ export class GameComponent
   numberOfFoxes: number = 0;
   roundCounter: number = 1;
 
-  subject = new Subject<RolledGameDie>();
+  subject = new Subject<DiceSet>();
 
   getFoxesScore()
   {
@@ -65,10 +66,11 @@ export class GameComponent
     + this.getFoxesScore();
   }
 
-  handleDieChosen(die : RolledGameDie)
+  handleDieChosen(dice : DiceSet)
   {
-    this.activeDie = die;
-    this.subject.next(die);
+    this.activeDie = dice.getActiveDie();
+    this.diceSet = dice;
+    this.subject.next(dice);
   }
 
   ngOnDestroy() {

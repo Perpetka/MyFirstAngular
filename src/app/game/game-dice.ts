@@ -48,8 +48,9 @@ export class DiceSet
     return this.rolledGameDice.filter( d => d.dieStatus == status);
   }
 
-  getDiceOnTray(){ return this.getDice( DieStatus.OnTray  );}
-  getUsedDice(){ return this.getDice( DieStatus.Used  );}
+  getDiceOnTray(){ return this.getDice( DieStatus.OnTray );}
+  getUsedDice(){ return this.getDice( DieStatus.Used );}
+  getActiveDie(){ return this.getDice( DieStatus.RolledActive )[0];}
 
   getActiveDice( ):RolledGameDie[]{
     let activeStatuses =[

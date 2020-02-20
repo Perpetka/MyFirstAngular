@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import {RolledGameDie } from './game-dice';
+import {RolledGameDie, DiceSet } from './game-dice';
 import {Bonus} from './bonus';
 import {BaseField} from './field';
 import { Subject } from 'rxjs';
@@ -8,16 +8,18 @@ import {BaseArea} from './area';
 
 export class AreaComponentBase
 {
-  @Input() dieSelectedNotifier: Subject<RolledGameDie>;
+  @Input() dieSelectedNotifier: Subject<DiceSet>;
   @Output() moveCompleted = new EventEmitter<Bonus[]>();
   currentDie: RolledGameDie;
+  currentDice: DiceSet;
   error: string;
 
   ngOnInit() 
   {
     if (this.dieSelectedNotifier) {
-      this.dieSelectedNotifier.subscribe((die) => {        
-        this.currentDie = die;
+      this.dieSelectedNotifier.subscribe((dice) => {        
+        this.currentDie = dice.getActiveDie();
+        this.currentDice = dice;
       });
       }  
   }

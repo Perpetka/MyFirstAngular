@@ -12,7 +12,7 @@ import { Subject } from 'rxjs';
   selector: "game",
   template: `
   
-  <dice-tray (dieChosen)="handleDieChosen($event)"></dice-tray>
+  <dice-tray (dieChosen)="handleDieChosen($event)" [roundEndNotifier]="roundEndSubject"></dice-tray>
   <br/>
  <h2>Selected die is: <span *ngIf="activeDie">{{activeDie.color}} {{activeDie.value}}</span></h2>
  <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}; round {{roundCounter}}</p>
@@ -49,6 +49,7 @@ export class GameComponent
   roundCounter: number = 1;
 
   subject = new Subject<DiceSet>();
+  roundEndSubject = new Subject<number>();
 
   getFoxesScore()
   {
@@ -100,7 +101,8 @@ export class GameComponent
       else if (bonus instanceof FoxBonus)
         this.numberOfFoxes++;
     }    
-    this.roundCounter++;
+    this.roundEndSubject.next(this.roundCounter);
+    this.roundCounter++;    
   }
 
 }

@@ -3,6 +3,7 @@ import { Output, EventEmitter } from '@angular/core';
 import { DiceSet, DieStatus, RolledGameDie } from './game-dice';
 import {DieProviderComponent} from '../die-provider.component';
 import {DieComponent} from '../die.component';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -14,6 +15,16 @@ export class DiceTrayComponent
 {
   diceSet: DiceSet;
   @Output() dieChosen = new EventEmitter<DiceSet>();
+  @Input() roundEndNotifier: Subject<number>;
+
+  ngOnInit() 
+  {
+    if (this.roundEndNotifier) {
+      this.roundEndNotifier.subscribe((endingRoundNumber) => {        
+        this.processRoundEnd(endingRoundNumber);
+      });
+      }  
+  }
 
   constructor() { 
     this.diceSet = new DiceSet();
@@ -38,5 +49,33 @@ export class DiceTrayComponent
     });
     die.dieStatus = DieStatus.RolledActive;
     this.dieChosen.emit(this.diceSet);
+  }
+
+  processRoundEnd(endingRoundNumber: number)
+  {
+    if( endingRoundNumber%4 == 0 )
+    {
+      this.diceSet.rolledGameDice.forEach( d => { 
+        d.roll();
+        d.dieStatus = DieStatus.RolledWillBeRerolled;
+      });
+    }    
+    else if( endingRoundNumber%4 == 3 ) 
+    {
+      this.diceSet.rolledGameDice.forEach( d => { 
+        d.roll();
+        d.dieStatus = DieStatus.OnTray;
+      });
+    }
+    else
+    {
+      this.diceSet.getDice(DieStatus.RolledWillGoToTray).forEach( d => {        
+        d.dieStatus = DieStatus.OnTray;
+      });
+      this.diceSet.getActiveDie().dieStatus = DieStatus.Used;
+      this.diceSet.getDice(DieStatus.RolledWillBeRerolled).forEach( d => {        d.roll();
+      });
+    }
+
   }
 }

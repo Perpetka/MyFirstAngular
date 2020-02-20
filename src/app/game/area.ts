@@ -3,6 +3,7 @@ import {Bonus, RetrieveDieAction, PlayOneMoreDieAction, ReRollAction, ExtraDieBo
 
 export class BaseArea
 {
+  
   getAreaBonuses( field: BaseField ) : Bonus[]
   {
     return [];
@@ -123,7 +124,7 @@ export class YellowArea extends BaseArea
       scores.forEach( 
         s => 
         {
-          if( (<Array<number>s[0]).every( i => this.fields[i].isChecked())) 
+          if( (<Array<number>>s[0]).every( i => this.fields[i].isChecked())) 
             sum+=<number>s[1];
         } );
       return sum;       
@@ -209,5 +210,15 @@ undefined
     getScoreValue( i: number)
     {      
       return (1+i)*i/2;
+    }
+  }
+
+  export class BlueArea extends BaseArea
+  {
+    fields: ExactField[];
+
+    constructor()
+    {
+      super();
     }
   }

@@ -17,6 +17,7 @@ import { Subject } from 'rxjs';
  <h2>Selected die is: <span *ngIf="activeDie">{{activeDie.color}} {{activeDie.value}}</span></h2>
  <p>rerolls: {{numberOfRerolls}}, "+1s": {{numberOfPlusOnes}}, foxes: {{numberOfFoxes}}; round {{roundCounter}}</p>
  <p>total score: 
+ <span style="color: yellow">{{yellowArea.getScore()}}</span> + 
  <span style="color: orange">{{orangeArea.getScore()}}</span> + 
  <span style="color: purple">{{purpleArea.getScore()}}</span> + 
  <span style="color: red">{{getFoxesScore()}}</span> =
@@ -46,12 +47,15 @@ export class GameComponent
 
   getFoxesScore()
   {
-    return this.numberOfFoxes * Math.min( this.orangeArea.getScore(), this.purpleArea.getScore());
+    return this.numberOfFoxes * Math.min( this.orangeArea.getScore(), this.purpleArea.getScore(),
+    this.yellowArea.getScore());
   }
 
   getTotalScore()
   {
-    return this.orangeArea.getScore()+ this.purpleArea.getScore()
+    return this.orangeArea.getScore()
+    + this.purpleArea.getScore()
+    + this.yellowArea.getScore()
     + this.getFoxesScore();
   }
 

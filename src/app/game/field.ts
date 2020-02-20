@@ -112,11 +112,15 @@ export class ExactField extends RestrictedField
 export class SubsequentMinValueField extends RestrictedField
 {
   minValue : number;
+  previousField : BaseField;
 
   canBeChecked(die : RolledGameDie)
   {
     if( !super.canBeChecked(die))
         return false;
+    if( this.previousField && !this.previousField.isChecked() )
+        return false;
+      
     return die.value >= this.minValue || die.isWildcardValue;
   }
 }

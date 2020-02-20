@@ -97,10 +97,28 @@ export class YellowArea
     constructor()
     {
       this.fields = [];
-      for( let i= 0; i<12; i++ )
+
+    let bonuses: Bonus[] = [
+undefined,
+undefined,
+undefined,
+new PlayOneMoreDieAction(),
+undefined,
+new ExtraDieBonus("blue", undefined),
+new FoxBonus(),
+undefined,
+new ExtraDieBonus( "purple", 6 ),
+new ReRollAction(),
+undefined
+    ];
+
+      for( let i= 0; i<bonuses.length; i++ )
       {
         this.fields.push( new SubsequentMinValueField("green") );
-        this.fields[i].minValue = 1 + (i>5 ? i-6 : i);
+        this.fields[i].minValue = 1 + (i>4 ? i-5 : i);
+        this.fields[i].bonus = bonuses[i];
+        if( i>0 )
+          this.fields[i].previousField = this.fields[i-1]; 
       }
     }
 
@@ -108,6 +126,11 @@ export class YellowArea
     {
       var sum = 0;
       this.fields.forEach( f => {if( f.isChecked()) sum++;} );
-      return sum; 
+      return this.getScoreValue(sum); 
     }  
+
+    getScoreValue( i: number)
+    {      
+      return (1+i)*i/2;
+    }
   }

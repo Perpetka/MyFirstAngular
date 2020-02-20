@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import {ExactField, RestrictedField, SubsequentMinValueField} from './field';
+import {BonusComponent} from './bonus.component';
 
 @Component({
   selector: "exact-field",
@@ -8,9 +9,10 @@ import {ExactField, RestrictedField, SubsequentMinValueField} from './field';
   {
     'checked': field.isChecked(),
     'unchecked' : !field.isChecked()
-  }">{{getText()}}</div>`,
+  }">{{getText()}}<div class="bonus-holder"><bonus [bonus]="field.bonus"></bonus></div></div>`,
   styles: [".field {float: left; height:20px; width: 20px; cursor:pointer; border: solid 1px; padding: 1px; margin: 2px; position:relative;  text-align: center;}",
-  ".checked {font-weight:bold;} .unchecked {color:grey;}"]
+  ".checked {font-weight:bold;} .unchecked {color:grey;}",
+  ".bonus-holder {position:absolute; bottom: -7px; left: 9px;} "]
 })
 export class ExactFieldComponent
 {

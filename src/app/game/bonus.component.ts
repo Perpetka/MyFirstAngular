@@ -14,7 +14,7 @@ import {Bonus, Action, ExtraDieBonus, PlayOneMoreDieAction, ReRollAction, FoxBon
   >{{getIcon()}}</div>`,
   styles: [".bonus { font-size: xx-small; width: 10px; text-align: center;} ",
    ".action {color: white;}",
-   ".die {font-weight: bold;}"]
+   ".die {font-weight: bold; color:black;}"]
 })
 export class BonusComponent
 {

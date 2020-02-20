@@ -47,7 +47,7 @@ export class DiceTrayComponent
       else
         d.dieStatus = DieStatus.RolledWillBeRerolled;
     });
-    die.dieStatus = DieStatus.RolledActive;
+    this.diceSet.activeDie = die;
     this.dieChosen.emit(this.diceSet);
   }
 

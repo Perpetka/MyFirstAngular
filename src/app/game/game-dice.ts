@@ -23,7 +23,6 @@ export class RolledGameDie extends RolledDie
 
 export enum DieStatus
 {
-  RolledActive,
   RolledWillGoToTray,
   RolledWillBeRerolled,
   Used,
@@ -32,7 +31,8 @@ export enum DieStatus
 
 export class DiceSet
 {
-  rolledGameDice : RolledGameDie[]
+  rolledGameDice : RolledGameDie[];
+  activeDie : RolledGameDie;
 
   constructor()
   {
@@ -50,11 +50,10 @@ export class DiceSet
 
   getDiceOnTray(){ return this.getDice( DieStatus.OnTray );}
   getUsedDice(){ return this.getDice( DieStatus.Used );}
-  getActiveDie(){ return this.getDice( DieStatus.RolledActive )[0];}
+  getActiveDie(){ return this.activeDie;}
 
   getActiveDice( ):RolledGameDie[]{
     let activeStatuses =[
-      DieStatus.RolledActive,
       DieStatus.RolledWillGoToTray,
       DieStatus.RolledWillBeRerolled
     ];

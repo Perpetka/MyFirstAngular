@@ -67,9 +67,12 @@ export class GameComponent
     + this.getFoxesScore();
   }
 
-  handleDieChosen(dice : DiceSet)
+  handleDieChosen(dice : DiceSet, activeDie: RolledGameDie)
   {
-    this.activeDie = dice.getActiveDie();
+    if( activeDie )
+       this.activeDie = activeDie;
+    else
+       this.activeDie = dice.getActiveDie();
     this.diceSet = dice;
     this.subject.next(dice);
   }
@@ -91,7 +94,7 @@ export class GameComponent
       var bonus = this.activeBonuses.pop();
       if( bonus instanceof ExtraDieBonus)
       {
-        this.handleDieChosen((<ExtraDieBonus>bonus).die);
+        this.handleDieChosen(this.diceSet, (<ExtraDieBonus>bonus).die);
         return;
       }
       if ( bonus instanceof ReRollAction )

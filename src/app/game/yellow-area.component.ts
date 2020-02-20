@@ -17,13 +17,13 @@ import {BonusComponent} from './bonus.component';
        <td *ngFor="let c of range"> 
          <exact-field [field]="getField(r,c)" (FieldClicked)="processFieldClick($event)"></exact-field>
        </td>
-      <td><bonus [bonus]="bonuses[r]"></bonus></td>
+      <td><bonus [bonus]="area.bonuses[r]"></bonus></td>
     </tr>
     <tr>
      <td *ngFor="let c of range"> <div class="yellow-score">
      {{scoreValues[c]}}
      </div> </td>
-     <td><bonus [bonus]="bonuses[4]"></bonus></td>
+     <td><bonus [bonus]="area.bonuses[4]"></bonus></td>
     </tr>
   </table>
 
@@ -38,11 +38,7 @@ export class YellowAreaComponent extends AreaComponentBase
   @Input() area: YellowArea;
   
   range = [0,1,2,3];
-  bonuses = [ new ExtraDieBonus("blue", undefined),
-  new ExtraDieBonus("orange", 4),
-  new ExtraDieBonus("green", undefined),
-  new FoxBonus(),
-  new PlayOneMoreDieAction()];
+  
   scoreValues = [10,14,16,20];
 
   getField( row : number, column : number) : ExactField

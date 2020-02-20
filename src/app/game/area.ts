@@ -72,18 +72,30 @@ export class YellowArea
   {
     fields: ExactField[];
 
+    bonuses : Bonus[];
+
     constructor()
     {
       this.fields = [];
 
-      let values = [3,6, 5,2,1,5,1,2,4,3,4,6];
-
+      let values = [
+      3,6,5,
+      2,1,5,
+      1,2,4,
+      3,4,6];
 
       for( let i= 0; i<values.length; i++ )
       {
         this.fields.push( new ExactField("yellow") );
         this.fields[i].requiredValue = values[i];
       }
+
+      this.bonuses = [ 
+          new ExtraDieBonus("blue", undefined),
+          new ExtraDieBonus("orange", 4),
+          new ExtraDieBonus("green", undefined),
+          new FoxBonus(),
+          new PlayOneMoreDieAction()];
     }
 
     getScore() : number

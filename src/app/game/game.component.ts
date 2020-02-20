@@ -1,5 +1,5 @@
 import {Component, Input, ViewChildren} from '@angular/core';
-import {OrangeArea, PurpleArea} from './area';
+import {OrangeArea, PurpleArea, YellowArea} from './area';
 import {ValueFieldComponent} from './value-field.component'
 import {BaseField} from './field';
 import {RolledGameDie } from './game-dice';
@@ -22,6 +22,8 @@ import { Subject } from 'rxjs';
  <span style="color: red">{{getFoxesScore()}}</span> =
   {{getTotalScore()}} </p>
   
+   <yellow-area [area]="yellowArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></yellow-area>
+
   <orange-area [area]="orangeArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></orange-area>
 
   <purple-area [area]="purpleArea" [dieSelectedNotifier]="subject" (moveCompleted)="handleMoveCompleted($event)"></purple-area>
@@ -33,6 +35,7 @@ export class GameComponent
   activeDie: RolledGameDie;
   orangeArea: OrangeArea = new OrangeArea();
   purpleArea: PurpleArea = new PurpleArea();
+  yellowArea: YellowArea = new YellowArea();
   activeBonuses: Bonus[] = [];
   numberOfRerolls: number = 0;
   numberOfPlusOnes: number = 0;

@@ -85,7 +85,7 @@ export class YellowArea
     getScore() : number
     {
       var sum = 0;
-      this.fields.forEach( f => sum++ );
+      this.fields.forEach( f => {if( f.isChecked()) sum++;} );
       return sum; 
     }  
   }

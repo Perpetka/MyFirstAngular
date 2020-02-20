@@ -109,7 +109,7 @@ export class ExactField extends RestrictedField
   }
 }
 
-export class MinValueField extends RestrictedField
+export class SubsequentMinValueField extends RestrictedField
 {
   minValue : number;
 

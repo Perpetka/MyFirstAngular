@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import {ExactField, RestrictedField, MinValueField} from './field';
+import {ExactField, RestrictedField, SubsequentMinValueField} from './field';
 
 @Component({
   selector: "exact-field",
@@ -25,7 +25,7 @@ export class ExactFieldComponent
     if( this.field instanceof ExactField)
       return (<ExactField>this.field).requiredValue;
     else
-      return (<MinValueField>this.field).minValue + '+';
+      return (<SubsequentMinValueField>this.field).minValue + '+';
   }
  
   onclick()

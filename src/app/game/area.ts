@@ -1,4 +1,4 @@
-import {SubsequentValueField, SubsequentIncreasingValueField, ExactField} from './field';
+import {SubsequentValueField, SubsequentIncreasingValueField, ExactField, SubsequentMinValueField} from './field';
 import {Bonus, RetrieveDieAction, PlayOneMoreDieAction, ReRollAction, ExtraDieBonus, FoxBonus} from './bonus';
 
 export class OrangeArea
@@ -79,6 +79,28 @@ export class YellowArea
       {
         this.fields.push( new ExactField("yellow") );
         this.fields[i].requiredValue = 1 + (i>5 ? i-6 : i);
+      }
+    }
+
+    getScore() : number
+    {
+      var sum = 0;
+      this.fields.forEach( f => {if( f.isChecked()) sum++;} );
+      return sum; 
+    }  
+  }
+
+  export class GreenArea
+  {
+    fields: SubsequentMinValueField[];
+
+    constructor()
+    {
+      this.fields = [];
+      for( let i= 0; i<12; i++ )
+      {
+        this.fields.push( new SubsequentMinValueField("green") );
+        this.fields[i].minValue = 1 + (i>5 ? i-6 : i);
       }
     }
 

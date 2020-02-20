@@ -92,7 +92,12 @@ export class SubsequentIncreasingValueField extends SubsequentValueField{
 
 }
 
-export class ExactField extends BaseField
+export class RestrictedField extends BaseField 
+{
+  
+}
+
+export class ExactField extends RestrictedField
 {
   requiredValue : number;
 
@@ -104,5 +109,15 @@ export class ExactField extends BaseField
   }
 }
 
+export class MinValueField extends RestrictedField
+{
+  minValue : number;
 
+  canBeChecked(die : RolledGameDie)
+  {
+    if( !super.canBeChecked(die))
+        return false;
+    return die.value >= this.minValue || die.isWildcardValue;
+  }
+}
 

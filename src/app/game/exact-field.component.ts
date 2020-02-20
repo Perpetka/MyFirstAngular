@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import {ExactField} from './field';
+import {ExactField, RestrictedField, MinValueField} from './field';
 
 @Component({
   selector: "exact-field",
@@ -14,15 +14,18 @@ import {ExactField} from './field';
 })
 export class ExactFieldComponent
 {
-  @Input() field: ExactField;
-  @Output() FieldClicked = new EventEmitter<ExactField>();
+  @Input() field: RestrictedField;
+  @Output() FieldClicked = new EventEmitter<RestrictedField>();
 
   getText()
   {
     if (this.field.isChecked())  
       return "X"; 
     else 
-      return this.field.requiredValue;
+    if( this.field instanceof ExactField)
+      return (<ExactField>this.field).requiredValue;
+    else
+      return (<MinValueField>this.field).minValue + '+';
   }
  
   onclick()

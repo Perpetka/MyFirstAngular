@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {RolledGameDie } from './game/game-dice';
+import {RolledGameDie, DiceSet } from './game/game-dice';
 import { Output, EventEmitter } from '@angular/core';
 
 

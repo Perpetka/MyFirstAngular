@@ -12,7 +12,7 @@ import {AreaComponentBase} from './area-components-base';
   </div>
   </div>
   `,
-  styles: [".block {clear:left; margin-top:8px; margin-bottom: 8px; border: orange 1px solid;}}"]
+ styleUrls: ["./area.css"]
 })
 
 export class OrangeAreaComponent extends AreaComponentBase

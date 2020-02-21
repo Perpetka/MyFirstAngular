@@ -13,8 +13,8 @@ import {AreaComponentBase} from './area-components-base';
     <div class="between-fields" *ngIf="!isLast">&lt;</div>
   </div></div>
   `,
-  styles: [".between-fields {float: left;}",
-  ".block {clear:left; margin-top:20px; border: purple 1px solid; font-size: xx-small;}}"]
+  
+  styleUrls: ["./area.css"]
 })
 
 export class PurpleAreaComponent  extends AreaComponentBase

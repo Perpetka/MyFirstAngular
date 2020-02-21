@@ -12,7 +12,7 @@ import {BonusComponent} from './bonus.component';
   }">{{getText()}}<div class="bonus-holder"><bonus [bonus]="field.bonus"></bonus></div></div>`,
   styles: [".field {float: left; height:20px; width: 20px; cursor:pointer; border: solid 1px; padding: 1px; margin: 2px; position:relative;  text-align: center;}",
   ".checked {font-weight:bold;} .unchecked {color:grey;}",
-  ".bonus-holder {position:absolute; bottom: -7px; left: 9px;} "]
+  ".bonus-holder {position:absolute; bottom: -7px; left: 7px;} "]
 })
 export class ExactFieldComponent
 {

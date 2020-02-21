@@ -1,4 +1,4 @@
-.block {clear:left; border: green 1px solid}
+.block {clear:left; border: green 1px solid;}
 
 .block::after { content: '';  clear: both;  display: table;}
 
